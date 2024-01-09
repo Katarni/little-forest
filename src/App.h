@@ -5,6 +5,7 @@
 #pragma once
 #include "includes.h"
 
+
 class App: QMainWindow {
   Q_OBJECT
 
@@ -13,4 +14,5 @@ class App: QMainWindow {
 
  private:
   QMainWindow* window_;
+  QWidget* buttons_palette_;
 };
