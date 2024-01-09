@@ -28,6 +28,8 @@ class AVLNode {
 
   static AVLNode* eraseByKey(AVLNode* node, int64_t key);
 
+  static bool existKey(AVLNode* node, int64_t key);
+
  private:
   int64_t key_;
   int height_;

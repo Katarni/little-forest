@@ -87,3 +87,17 @@ AVLNode* AVLNode::eraseByKey(AVLNode* node, int64_t key) {
 
   return restoreBalance(node);
 }
+
+bool AVLNode::existKey(AVLNode* node, int64_t key) {
+  if (node == nullptr) {
+    return false;
+  }
+
+  if (key < node->key_) {
+    return existKey(node->left_, key);
+  } else if (key > node->key_) {
+    return existKey(node->right_, key);
+  }
+
+  return true;
+}
