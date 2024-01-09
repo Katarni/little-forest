@@ -48,7 +48,7 @@ AVLNode* AVLNode::eraseMinNode(AVLNode* node) {
   return restoreBalance(node);
 }
 
-AVLNode *AVLNode::insertByKey(AVLNode *node, int64_t key)  {
+AVLNode* AVLNode::insertByKey(AVLNode* node, int64_t key)  {
   if (node == nullptr) {
     return new AVLNode(key);
   }
@@ -61,7 +61,7 @@ AVLNode *AVLNode::insertByKey(AVLNode *node, int64_t key)  {
   return restoreBalance(node);
 }
 
-AVLNode *AVLNode::eraseByKey(AVLNode *node, int64_t key) {
+AVLNode* AVLNode::eraseByKey(AVLNode* node, int64_t key) {
   if (node == nullptr) {
     return nullptr;
   }
