@@ -17,14 +17,14 @@ add_executable(Forest src/main.cpp
         src/App.cpp
         src/App.h
         src/includes.h
-        src/trees/AVLNode.cpp
-        src/trees/AVLNode.h
-        src/trees/RBNode.cpp
-        src/trees/RBNode.h
-        src/trees/TreapNode.cpp
-        src/trees/TreapNode.h
-        src/trees/SplayNode.cpp
-        src/trees/SplayNode.h)
+        src/trees/AVLTree/AVLNode.cpp
+        src/trees/AVLTree/AVLNode.h
+        src/trees/RBTree/RBNode.cpp
+        src/trees/RBTree/RBNode.h
+        src/trees/Treap/TreapNode.cpp
+        src/trees/Treap/TreapNode.h
+        src/trees/SplayTree/SplayNode.cpp
+        src/trees/SplayTree/SplayNode.h)
 target_link_libraries(Forest
         Qt::Core
         Qt::Gui
