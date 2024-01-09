@@ -11,20 +11,22 @@ class AVLNode {
  public:
   explicit AVLNode(int64_t key): key_(key), left_(nullptr), right_(nullptr), height_(1) {}
 
-  static uint8_t getHeight(AVLNode* node) {
+  static int getHeight(AVLNode* node) {
     return node != nullptr ? node->height_ : 0;
   }
 
-  static uint8_t getBalanceFactor(AVLNode* node) {
+  static int getBalanceFactor(AVLNode* node) {
     if (node == nullptr) {
       return 0;
     }
     return getHeight(node->right_) - getHeight(node->left_);
   }
 
+  static AVLNode* restoreBalance(AVLNode* node);
+
  private:
   int64_t key_;
-  uint8_t height_;
+  int height_;
 
   AVLNode* left_;
   AVLNode* right_;
@@ -33,6 +35,6 @@ class AVLNode {
     node->height_ = getHeight(node->left_) > getHeight(node->right_) ? getHeight(node->left_) : getHeight(node->right_);
   }
 
-  static AVLNode* rightRotation(AVLNode* p);
-  static AVLNode* leftRotation(AVLNode* p);
+  static AVLNode* rightRotation(AVLNode* node_p);
+  static AVLNode* leftRotation(AVLNode* node_p);
 };
