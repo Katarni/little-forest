@@ -24,6 +24,19 @@ class AVLNode {
 
   static AVLNode* restoreBalance(AVLNode* node);
 
+  static AVLNode* insertByKey(AVLNode* node, int64_t key) {
+    if (node == nullptr) {
+      return new AVLNode(key);
+    }
+    if (key < node->key_) {
+      node->left_ = insertByKey(node->left_, key);
+    } else {
+      node->right_ = insertByKey(node->right_, key);
+    }
+
+    return restoreBalance(node);
+  }
+
  private:
   int64_t key_;
   int height_;
