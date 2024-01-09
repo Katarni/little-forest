@@ -7,4 +7,10 @@
 
 class App: QMainWindow {
   Q_OBJECT
+
+ public:
+  App(int width, int height);
+
+ private:
+  QMainWindow* window_;
 };

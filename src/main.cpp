@@ -3,5 +3,7 @@
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
 
+  App app = App(1100, 700);
+
   return QApplication::exec();
 }
