@@ -16,7 +16,9 @@ find_package(Qt6 COMPONENTS
 add_executable(Forest src/main.cpp
         src/App.cpp
         src/App.h
-        src/includes.h)
+        src/includes.h
+        src/trees/AVLNode.cpp
+        src/trees/AVLNode.h)
 target_link_libraries(Forest
         Qt::Core
         Qt::Gui

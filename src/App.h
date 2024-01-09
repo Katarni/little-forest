@@ -13,6 +13,8 @@ class App: QMainWindow {
   App(int width, int height);
 
  private:
+  uint8_t current_tree = 1;
+
   QMainWindow* window_;
   QWidget* buttons_palette_;
 };
