@@ -7,6 +7,6 @@
 #include "../includes.h"
 
 
-class AVLNode {
+class TreapNode {
 
 };

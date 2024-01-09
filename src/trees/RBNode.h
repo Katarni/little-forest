@@ -7,6 +7,7 @@
 #include "../includes.h"
 
 
-class AVLNode {
+class RBNode {
 
 };
+

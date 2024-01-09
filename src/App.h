@@ -17,4 +17,5 @@ class App: QMainWindow {
 
   QMainWindow* window_;
   QWidget* buttons_palette_;
+  QWidget* add_node_button_;
 };
