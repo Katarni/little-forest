@@ -101,3 +101,16 @@ bool AVLNode::existKey(AVLNode* node, int64_t key) {
 
   return true;
 }
+
+AVLNode* AVLNode::addNRandomNodes(AVLNode* node, int n) {
+  std::random_device random;
+  std::mt19937 get(random());
+  for (int i = 0; i < n; ++i) {
+    int64_t key = get() % kMod;
+    while (!existKey(node, key)) {
+      ++key;
+    }
+    node = insertByKey(node, key);
+  }
+  return node;
+}

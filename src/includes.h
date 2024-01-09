@@ -13,3 +13,6 @@
 #include "vector"
 #include "algorithm"
 #include "set"
+#include "random"
+
+const int64_t kMod = 1e9 + 7;

@@ -30,6 +30,8 @@ class AVLNode {
 
   static bool existKey(AVLNode* node, int64_t key);
 
+  static AVLNode* addNRandomNodes(AVLNode* node, int n);
+
  private:
   int64_t key_;
   int height_;
