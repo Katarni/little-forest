@@ -3,7 +3,17 @@
 //
 
 #pragma once
+
+#include "trees/AVLTree/AVLNode.h"
 #include "includes.h"
+
+
+enum class Trees {
+  AVL,
+  RB,
+  Splay,
+  Treap
+};
 
 
 class App: QMainWindow {
@@ -11,9 +21,12 @@ class App: QMainWindow {
 
  public:
   App(int width, int height);
+  ~App();
 
  private:
-  uint8_t current_tree = 1;
+  Trees crt_tree;
+
+  AVLNode* avl_node_;
 
   QMainWindow* window_;
   QWidget* buttons_palette_;

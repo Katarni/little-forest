@@ -24,18 +24,9 @@ class AVLNode {
 
   static AVLNode* restoreBalance(AVLNode* node);
 
-  static AVLNode* insertByKey(AVLNode* node, int64_t key) {
-    if (node == nullptr) {
-      return new AVLNode(key);
-    }
-    if (key < node->key_) {
-      node->left_ = insertByKey(node->left_, key);
-    } else {
-      node->right_ = insertByKey(node->right_, key);
-    }
+  static AVLNode* insertByKey(AVLNode* node, int64_t key);
 
-    return restoreBalance(node);
-  }
+  static AVLNode* eraseByKey(AVLNode* node, int64_t key);
 
  private:
   int64_t key_;
@@ -48,6 +39,12 @@ class AVLNode {
     node->height_ = getHeight(node->left_) > getHeight(node->right_) ? getHeight(node->left_) : getHeight(node->right_);
   }
 
-  static AVLNode* rightRotation(AVLNode* node_p);
-  static AVLNode* leftRotation(AVLNode* node_p);
+  static AVLNode* rightRotation(AVLNode* node);
+  static AVLNode* leftRotation(AVLNode* node);
+
+  static AVLNode* findMinNode(AVLNode* node) {
+    return node->left_ != nullptr ? findMinNode(node->left_) : node;
+  }
+
+  static AVLNode* eraseMinNode(AVLNode* node);
 };

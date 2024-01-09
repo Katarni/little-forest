@@ -5,6 +5,8 @@
 #include "App.h"
 
 App::App(int width, int height) {
+  crt_tree = Trees::AVL;
+
   window_ = new QMainWindow();
   window_->setFixedSize(width, height);
   window_->setWindowTitle("My Little Forest");
@@ -18,4 +20,9 @@ App::App(int width, int height) {
                                   "border-bottom-left-radius: 10px; }");
 
   window_->show();
+}
+
+App::~App() {
+  delete buttons_palette_;
+  delete window_;
 }

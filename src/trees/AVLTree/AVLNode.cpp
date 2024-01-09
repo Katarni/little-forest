@@ -4,22 +4,22 @@
 
 #include "AVLNode.h"
 
-AVLNode* AVLNode::rightRotation(AVLNode* node_p) {
-  AVLNode* node_q = node_p->left_;
-  node_p->left_ = node_q->right_;
-  node_q->right_ = node_p;
-  updateHeight(node_p);
-  updateHeight(node_q);
-  return node_q;
+AVLNode* AVLNode::rightRotation(AVLNode* node) {
+  AVLNode* left_node = node->left_;
+  node->left_ = left_node->right_;
+  left_node->right_ = node;
+  updateHeight(node);
+  updateHeight(left_node);
+  return left_node;
 }
 
-AVLNode* AVLNode::leftRotation(AVLNode* node_p) {
-  AVLNode* node_q = node_p->right_;
-  node_p->right_ = node_q->left_;
-  node_q->left_ = node_p;
-  updateHeight(node_p);
-  updateHeight(node_q);
-  return node_q;
+AVLNode* AVLNode::leftRotation(AVLNode* node) {
+  AVLNode* right_node = node->right_;
+  node->right_ = right_node->left_;
+  right_node->left_ = node;
+  updateHeight(node);
+  updateHeight(right_node);
+  return right_node;
 }
 
 AVLNode* AVLNode::restoreBalance(AVLNode* node) {
@@ -38,4 +38,52 @@ AVLNode* AVLNode::restoreBalance(AVLNode* node) {
     return rightRotation(node);
   }
   return node;
+}
+
+AVLNode* AVLNode::eraseMinNode(AVLNode* node) {
+  if (node->left_ == nullptr) {
+    return node->right_;
+  }
+  node->left_ = eraseMinNode(node->left_);
+  return restoreBalance(node);
+}
+
+AVLNode *AVLNode::insertByKey(AVLNode *node, int64_t key)  {
+  if (node == nullptr) {
+    return new AVLNode(key);
+  }
+  if (key < node->key_) {
+    node->left_ = insertByKey(node->left_, key);
+  } else {
+    node->right_ = insertByKey(node->right_, key);
+  }
+
+  return restoreBalance(node);
+}
+
+AVLNode *AVLNode::eraseByKey(AVLNode *node, int64_t key) {
+  if (node == nullptr) {
+    return nullptr;
+  }
+
+  if (key < node->key_) {
+    node->left_ = eraseByKey(node->left_, key);
+  } else if (key > node->key_) {
+    node->right_ = eraseByKey(node->right_, key);
+  } else {
+    AVLNode* left_node = node->left_;
+    AVLNode* right_node = node->right_;
+    delete node;
+
+    if (right_node == nullptr) {
+      return left_node;
+    }
+
+    AVLNode* min_node = findMinNode(right_node);
+    min_node->right_ = eraseMinNode(right_node);
+    min_node->left_ = left_node;
+    return restoreBalance(min_node);
+  }
+
+  return restoreBalance(node);
 }
