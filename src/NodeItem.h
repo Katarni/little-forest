@@ -7,9 +7,10 @@
 #include "includes.h"
 
 
-class NodeItem: QGraphicsItem {
+class NodeItem: public QGraphicsItem {
  public:
-  NodeItem(int x, int y, double radius, QString key): x_(x), y_(y), radius_(radius), key_(std::move(key)) {}
+  NodeItem();
+  NodeItem(int x, int y, double radius, int64_t key): x_(x), y_(y), radius_(radius), key_(key) {}
 
  protected:
   void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = nullptr) override;
@@ -18,6 +19,6 @@ class NodeItem: QGraphicsItem {
  private:
   int x_, y_;
   double radius_;
-  QString key_;
+  int64_t key_;
 };
 

@@ -23,3 +23,4 @@
 #include "random"
 
 const int64_t kMod = 1e9 + 7;
+const int kNodeRad = 90;

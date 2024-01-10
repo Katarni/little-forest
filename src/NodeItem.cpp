@@ -9,8 +9,14 @@ QRectF NodeItem::boundingRect() const {
 }
 
 void NodeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-  auto* node = new QGraphicsEllipseItem();
-  node->setRect(x_ - radius_ / 2, y_ - radius_ / 2, radius_, radius_);
-  node->setBrush(QColor(235, 215, 245));
-  node->paint(painter, option, widget);
+  painter->setPen(Qt::NoPen);
+  painter->setBrush(QColor(235, 215, 245));
+  painter->drawEllipse(int(x_ - radius_ / 2), int(y_ - radius_ / 2), (int)radius_, (int)radius_);
+}
+
+NodeItem::NodeItem() : QGraphicsItem() {
+  x_ = 0;
+  y_ = 0;
+  radius_ = 0;
+  key_ = 0;
 }
