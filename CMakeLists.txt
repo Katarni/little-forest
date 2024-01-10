@@ -24,7 +24,9 @@ add_executable(Forest src/main.cpp
         src/trees/Treap/TreapNode.cpp
         src/trees/Treap/TreapNode.h
         src/trees/SplayTree/SplayNode.cpp
-        src/trees/SplayTree/SplayNode.h)
+        src/trees/SplayTree/SplayNode.h
+        src/NodeItem.cpp
+        src/NodeItem.h)
 target_link_libraries(Forest
         Qt::Core
         Qt::Gui
