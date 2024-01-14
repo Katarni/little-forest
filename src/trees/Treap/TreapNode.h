@@ -8,5 +8,16 @@
 
 
 class TreapNode {
+ public:
 
+
+ private:
+  int64_t x_, y_;
+  TreapNode* left;
+  TreapNode* right;
+
+  int64_t getMaxVal(TreapNode* node);
+  int64_t getMinVal(TreapNode* node);
+
+  TreapNode* merge(TreapNode* a, TreapNode* b);
 };

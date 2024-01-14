@@ -41,8 +41,8 @@ App::App(int width, int height) {
   avl_layout_ = new QGraphicsView(window_);
   avl_layout_->resize(width - 250, height - 50);
   avl_layout_->move(10, 40);
-  avl_layout_->setStyleSheet(" background: #fff; ");
-
+  avl_layout_->setStyleSheet("QGraphicsView { background: #fff;"
+                             "border-radius: 10px; }");
   avl_scene_ = new QGraphicsScene();
   avl_scene_->setBackgroundBrush(QColor(255, 255, 255));
 
@@ -65,7 +65,7 @@ void App::addNode() {
     for (auto & node : avl_nodes_list_) {
       delete node;
     }
-    drawAVL(avl_node_, int(avl_scene_->width() / 2), 70);
+    drawAVL(avl_node_, int(avl_scene_->width() / 2), 0);
 
     window_->show();
   }
