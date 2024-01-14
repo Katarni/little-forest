@@ -20,6 +20,16 @@ class TreapNode {
 
   static bool existsKey(TreapNode* node, int64_t key);
 
+  static TreapNode* removeKey(TreapNode* node, int64_t key);
+
+  int64_t getKey() const {
+    return key_;
+  }
+
+  int64_t getPriority() const {
+    return priority_;
+  }
+
  private:
   int64_t key_, priority_;
   TreapNode* left_;

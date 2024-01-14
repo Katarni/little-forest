@@ -67,3 +67,15 @@ bool TreapNode::existsKey(TreapNode *node, int64_t key) {
   }
   return existsKey(node->right_, key);
 }
+
+TreapNode *TreapNode::removeKey(TreapNode *node, int64_t key) {
+  if (node == nullptr) return nullptr;
+  if (node->key_ == key) {
+    node = merge(node->left_, node->right_);
+  } else if (key < node->key_) {
+    node->left_ = removeKey(node->left_, key);
+  } else {
+    node->right_ = removeKey(node->right_, key);
+  }
+  return node;
+}

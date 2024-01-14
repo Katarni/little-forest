@@ -32,7 +32,7 @@ class AVLNode {
 
   static AVLNode* addNRandomNodes(AVLNode* node, int n);
 
-  const int64_t getKey() const {
+  int64_t getKey() const {
     return key_;
   }
 
