@@ -16,8 +16,7 @@ class TreapNode {
   TreapNode* left;
   TreapNode* right;
 
-  int64_t getMaxVal(TreapNode* node);
-  int64_t getMinVal(TreapNode* node);
-
   TreapNode* merge(TreapNode* a, TreapNode* b);
+
+  std::pair<TreapNode*, TreapNode*> split(TreapNode* node, int64_t k);
 };

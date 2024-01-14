@@ -12,10 +12,6 @@ TreapNode *TreapNode::merge(TreapNode *a, TreapNode *b) {
     return a;
   }
 
-  if (getMaxVal(a) > getMinVal(b)) {
-    return nullptr;
-  }
-
   if (a->y_ > b->y_) {
     a->right = merge(a->right, b);
     return b;
@@ -25,25 +21,19 @@ TreapNode *TreapNode::merge(TreapNode *a, TreapNode *b) {
   return b;
 }
 
-int64_t TreapNode::getMaxVal(TreapNode *node) {
-  int64_t max_val = node->x_;
-  if (node->left != nullptr) {
-    max_val = std::max(max_val, getMaxVal(node->left));
+std::pair<TreapNode*, TreapNode*> TreapNode::split(TreapNode* node, int64_t k) {
+  if (node == nullptr) {
+    return {nullptr, nullptr};
   }
-  if (node->right != nullptr) {
-    max_val = std::max(max_val, getMaxVal(node->right));
-  }
-  return max_val;
-}
 
-int64_t TreapNode::getMinVal(TreapNode *node) {
-  int64_t min_val = node->x_;
-  if (node->left != nullptr) {
-    min_val = std::min(min_val, getMinVal(node->left));
+  if (node->x_ < k) {
+    auto divided = split(node->right, k);
+    node->right = divided.first;
+    return {node, divided.second};
   }
-  if (node->right != nullptr) {
-    min_val = std::min(min_val, getMinVal(node->right));
-  }
-  return min_val;
+
+  auto divided = split(node->left, k);
+  node->left = divided.second;
+  return {divided.first, node};
 }
 
