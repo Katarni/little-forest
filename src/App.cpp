@@ -17,8 +17,8 @@ App::App(int width, int height) {
   buttons_palette_->resize(230, height);
   buttons_palette_->move(width - buttons_palette_->width(), 0);
   buttons_palette_->setStyleSheet("QWidget { background: #fff;"
-                                  "border-top-left-radius: 10px;"
-                                  "border-bottom-left-radius: 10px; }");
+                                  "border-top-left_-radius: 10px;"
+                                  "border-bottom-left_-radius: 10px; }");
 
   add_node_edit_ = new QLineEdit(buttons_palette_);
   add_node_edit_->resize(210, 30);

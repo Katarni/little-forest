@@ -12,12 +12,12 @@ TreapNode *TreapNode::merge(TreapNode *a, TreapNode *b) {
     return a;
   }
 
-  if (a->y_ > b->y_) {
-    a->right = merge(a->right, b);
+  if (a->priority_ > b->priority_) {
+    a->right_ = merge(a->right_, b);
     return b;
   }
 
-  b->left = merge(a, b->left);
+  b->left_ = merge(a, b->left_);
   return b;
 }
 
@@ -26,14 +26,35 @@ std::pair<TreapNode*, TreapNode*> TreapNode::split(TreapNode* node, int64_t k) {
     return {nullptr, nullptr};
   }
 
-  if (node->x_ < k) {
-    auto divided = split(node->right, k);
-    node->right = divided.first;
+  if (node->key_ < k) {
+    auto divided = split(node->right_, k);
+    node->right_ = divided.first;
     return {node, divided.second};
   }
 
-  auto divided = split(node->left, k);
-  node->left = divided.second;
+  auto divided = split(node->left_, k);
+  node->left_ = divided.second;
   return {divided.first, node};
 }
 
+TreapNode *TreapNode::insert(TreapNode *node, int64_t key, int64_t priority) {
+  if (node == nullptr) {
+    return new TreapNode(key, priority);
+  }
+
+  if (priority > node->priority_) {
+    auto divided = split(node, key);
+    return new TreapNode(key, priority, divided.first, divided.second);
+  }
+
+  if (key > node->key_) {
+    node->right_ = insert(node->right_, key, priority);
+  } else {
+    node->left_ = insert(node->left_, key, priority);
+  }
+  return node;
+}
+
+bool TreapNode::existsKey(TreapNode *node, int64_t key) {
+  return false;
+}
