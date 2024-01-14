@@ -56,5 +56,14 @@ TreapNode *TreapNode::insert(TreapNode *node, int64_t key, int64_t priority) {
 }
 
 bool TreapNode::existsKey(TreapNode *node, int64_t key) {
-  return false;
+  if (node == nullptr) {
+    return false;
+  }
+
+  if (node->key_ == key) {
+    return true;
+  } else if (node->key_ < key) {
+    return existsKey(node->left_, key);
+  }
+  return existsKey(node->right_, key);
 }
